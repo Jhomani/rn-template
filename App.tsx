@@ -1,52 +1,30 @@
+import SplashScreen from 'react-native-splash-screen';
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Text, View, Button} from 'react-native';
 import {NavigationContainer, RouteProp} from '@react-navigation/native';
+import {Welcome} from './screen';
 import {
   createStackNavigator,
   StackNavigationProp,
 } from '@react-navigation/stack';
+
+import {createMyNavigator} from './myNav';
+
+const My = createMyNavigator();
 
 type RootStackParamList = {
   Home: {userId: string};
   Welcome: undefined;
 };
 
-const Stack = createStackNavigator<RootStackParamList>();
-
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
 type HomeScreenRouteProp = RouteProp<RootStackParamList, 'Home'>;
-
-type WelcomeScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
-  'Welcome'
->;
-type WelcomeScreenRouteProp = RouteProp<RootStackParamList, 'Welcome'>;
-
-interface WelcomeProps {
-  title: string;
-  navigation: WelcomeScreenNavigationProp;
-  route: WelcomeScreenRouteProp;
-}
 
 interface HomeProps {
   navigation: HomeScreenNavigationProp;
   route: HomeScreenRouteProp;
 }
-
-const Welcome: React.FC<WelcomeProps> = (props: WelcomeProps) => {
-  console.log(props);
-
-  return (
-    <View>
-      <Text>{props.title}</Text>
-      <Button
-        title="Go to Home"
-        onPress={() => props.navigation.navigate('Home', {userId: '13214'})}
-      />
-    </View>
-  );
-};
 
 function HomeScreen({navigation, route}: HomeProps) {
   console.log(route);
@@ -62,22 +40,37 @@ function HomeScreen({navigation, route}: HomeProps) {
   );
 }
 
-const {Navigator, Screen} = Stack;
+const {Navigator, Screen} = createStackNavigator<RootStackParamList>();
 
 const App: React.FC = () => {
+  useEffect(() => {
+  }, [])
+
+
   return (
+      // <My.Navigator>
+      //   <My.Screen name="Welcome" component={Welcome} />
+      //   <My.Screen name="Home" component={HomeScreen} />
+      // </My.Navigator>
     <NavigationContainer>
       <Navigator>
-        <Screen name="Welcome" options={{animationTypeForReplace: 'pop'}}>
-          {props => <Welcome {...props} title="this is parce" />}
-          {/*we can add a middlewhere in here*/}
+        <Screen 
+          name="Welcome" 
+          options={{
+            animationEnabled: false
+          }}
+        >
+          {props => <Welcome {...props} title="this is parce for you" />}
+          {/* we can add a middlewhere in here */}
         </Screen>
         <Screen
           name="Home"
           component={HomeScreen}
-          options={{animationTypeForReplace: 'pop'}}
-        />
-      </Navigator>
+          options={{
+            animationEnabled: false
+          }}
+        /> 
+      </Navigator> 
     </NavigationContainer>
   );
 };

@@ -1,6 +1,8 @@
 package com.mytemplate;
 
+import android.os.Bundle; // import this
 import com.facebook.react.ReactActivity;
+import org.devio.rn.splashscreen.SplashScreen; // import this
 
 public class MainActivity extends ReactActivity {
 
@@ -9,7 +11,15 @@ public class MainActivity extends ReactActivity {
    * rendering of the component.
    */
   @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    SplashScreen.show(this);  // here
+    System.out.println('im in herer');
+    super.onCreate(savedInstanceState);
+  }
+
+  @Override
   protected String getMainComponentName() {
     return "MyTemplate";
   }
+
 }

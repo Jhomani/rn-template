@@ -3,23 +3,37 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
+    "android": "yarn run device && react-native run-android",
     "ios": "react-native run-ios",
     "start": "yarn run device && react-native start",
     "device": "adb reverse --remove-all && adb -s 3087e435 reverse tcp:8081 tcp:8081",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "build": "yarn run device && react-native run-android --variant=release",
+    "build:local": "SET ENVFILE=.env.production.local && react-native run-android --variant=release",
+    "start:reset": "react-native start --reset-cache",
+    "clean": "./android/gradlew clean",
+    "install:pedro": "SET ENVFILE=.env.development && cd android && ./gradlew.bat app:installDebug -PreactNativeDevServerPort=8082 && cd ..",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "adb:reset": "adb kill-server",
+    "export:aab": "cd android && SET ENVFILE=.env.production && ./gradlew bundleRelease && cd ..",
+    "export:apk": "cd android && SET ENVFILE=.env.production && ./gradlew app:assembleRelease && cd ..",
+    "install:app": "adb -s ad06160308f124bbc5 install ./android/app/build/outputs/apk/debug/app-debug.apk",
+    "prettier": "prettier . --write",
+    "clean:cache": "yarn cache clean --force"
+
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/native": "^5.9.4",
     "@react-navigation/stack": "^5.14.5",
+    "@types/react": "^17",
     "react": "17.0.1",
     "react-native": "0.64.1",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-reanimated": "^2.2.0",
     "react-native-safe-area-context": "^3.2.0",
-    "react-native-screens": "^3.4.0"
+    "react-native-screens": "^3.4.0",
+    "react-native-splash-screen": "^3.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
