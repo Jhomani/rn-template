@@ -1,17 +1,10 @@
-import 'react-native-gesture-handler';
 import React, { useEffect } from 'react';
 import {Text, View, Button} from 'react-native';
-import {NavigationContainer, RouteProp} from '@react-navigation/native';
-import {StackNavigationProp} from '@react-navigation/stack';
-import SplashScreen from 'react-native-splash-screen';
-
-type RootStackParamList = {
-  Home: {userId: string};
-  Welcome: undefined;
-};
+import {RouteProp} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 type WelcomeScreenRouteProp = RouteProp<RootStackParamList, 'Welcome'>;
-type WelcomeScreenNavigationProp = StackNavigationProp<
+type WelcomeScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   'Welcome'
 >;
