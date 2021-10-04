@@ -17,7 +17,6 @@ export  const st_button = StyleSheet.create({
     right: 12,
     left: 12,
     top: 0,
-    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
@@ -25,12 +24,8 @@ export  const st_button = StyleSheet.create({
   },
   text: {
     color: '#fff',
-    textTransform: 'capitalize',
-    overflow: 'hidden',
-    lineHeight: 18,
     width: 100 - 26,
   },
-
   pressed: {
     position: 'absolute',
     backgroundColor: '#fff1',

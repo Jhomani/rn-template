@@ -11,6 +11,8 @@ module.exports = {
           "@components": './src/components',
           "@utils": './src/utils',
           "@redux": './src/redux',
+          "@src": './src',
+          "@styles": './styles',
          }
       }
     ],

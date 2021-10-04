@@ -5,9 +5,8 @@ import {
   Pressable,
 } from "react-native";
 
-import {Session} from '../storage';
-import {ModalRoot} from '../components/main';
-import {Menu} from '../icons';
+import {Session} from '@src/storage';
+import {Menu} from '@src/icons';
 import { useSelector } from 'react-redux';
 
 
@@ -39,7 +38,7 @@ const Header = () => {
           <Menu />
         </Pressable>
 
-        <Text style={{fontFamily: 'titillium_semibold', fontSize: 16, color: '#fff'}}>Matrixer - {currentScreen}</Text>
+        <Text style={{fontFamily: 'TisaMedium', fontSize: 16, color: '#fff'}}>Matrixer - {currentScreen}</Text>
 
         <Pressable 
           onPress={handleClick}

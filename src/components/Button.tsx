@@ -1,6 +1,7 @@
 import React, {  useRef } from 'react';
-import {Pressable, Text, View, Animated} from 'react-native';
+import {Pressable, View, Animated} from 'react-native';
 import { style } from 'src/Layout/styles';
+import {Text} from '@components/main'
 
 import {st_button} from '../../styles/components';
 
@@ -56,7 +57,8 @@ export const Button = (props: InButton) => {
 
         {children || content &&
           <Text 
-            style={[st_button.text, {marginLeft: icon ? 8 : 0}]}
+            type="button"
+            style={{...st_button.text, ...{marginLeft: icon ? 8 : 0}}}
             numberOfLines={1}  
             ellipsizeMode="tail"
           >

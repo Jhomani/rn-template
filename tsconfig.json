@@ -8,6 +8,8 @@
       "@utils/*": ["src/utils/*"],
       "@services/*": ["src/utils/services/*"],
       "@redux/*": ["src/redux/*"],
+      "@src/*": ["src/*"],
+      "@styles/*": ["styles/*"],
     },
 
     /* Basic Options */

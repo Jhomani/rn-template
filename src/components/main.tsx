@@ -1,3 +1,4 @@
 export * from './Modal';
 export * from './MyHeader';
-export * from './Button'
+export * from './Button';
+export * from './Typography';
