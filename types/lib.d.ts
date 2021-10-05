@@ -1,41 +1,5 @@
-declare interface MainState {
-  auth: {
-    userToken: string;
-    dateLogin: string;
-    userType: string;
-    dataUser: {
-      id: string;
-      email: string;
-      name: string;
-      language: 'EN' | 'ES';
-    }
-  };
-  global: {
-    mode: string;
-    screenSize: number;
-    showModal: boolean;
-    currentScreen: string;
-  };
-}
+// import {InGlobalState} from '@redux/global/reducer';
 
-declare interface DefaultRootState {
-  auth: {
-    userToken: string;
-    dateLogin: string;
-    userType: string;
-    dataUser: {
-      id: string;
-      email: string;
-      name: string;
-      language: 'EN' | 'ES';
-    }
-  };
-  global: {
-    mode: string;
-    screenSize: number;
-    showModal: boolean;
-  };
-}
 declare module "*.png" {
   const value: string;
   export default value;

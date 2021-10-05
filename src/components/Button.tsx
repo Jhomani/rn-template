@@ -18,10 +18,9 @@ interface InButton {
   inBlank?: string
 }
 
-
 export const Button = (props: InButton) => {
   const btn = useRef(null);
-  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const pressed = useRef(new Animated.Value(0)).current;
   const {
     children, content,
     type, icon,
@@ -34,13 +33,13 @@ export const Button = (props: InButton) => {
   const handleClick = () => {
     console.log(btn.current);
 
-    Animated.timing(fadeAnim, {
+    Animated.timing(pressed, {
       toValue: 150,
       duration: 320,
       useNativeDriver: false 
     }).start();
 
-    setTimeout(() => fadeAnim.setValue(0), 320)
+    setTimeout(() => pressed.setValue(0), 320)
 
     // if (onPress) onPress();
   }
@@ -67,7 +66,7 @@ export const Button = (props: InButton) => {
         }
       </View>
 
-      <Animated.View style={[st_button.pressed, { width: fadeAnim, height: fadeAnim } ]} />
+      <Animated.View style={[st_button.pressed, { width: pressed, height: pressed } ]} />
     </Pressable>
   );
 }

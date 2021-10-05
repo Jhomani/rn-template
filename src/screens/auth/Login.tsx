@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import {useDispatch} from 'react-redux';
 import Svg, {
   Defs, LinearGradient, 
-  Stop, Rect 
+  Stop, Rect
 } from 'react-native-svg';
 
 import {
@@ -14,7 +14,14 @@ import {
 } from "react-native";
 
 import { LoginProps } from './types';
-import {Modal, Button, Title, SubTitle, Text} from '@components/main'
+import {
+  Modal, 
+  Button, 
+  Title, 
+  SubTitle, 
+  Text,
+  Switch,
+} from '@components/main'
 import {Plus} from '../../icons'
 
 const style = StyleSheet.create({
@@ -61,36 +68,13 @@ export const Login = (props: LoginProps) => {
     <ScrollView 
       onScrollEndDrag={handleFocus}
       // stickyHeaderIndices={[]}
-      style={{position: 'relative', overflow: 'scroll'}} 
+      style={{backgroundColor: '#F2F2F2',position: 'relative', overflow: 'scroll'}} 
       // scrollEnabled={false}
       // disableIntervalMomentum={true}
       // disableScrollViewPanResponder={true}
     >
-    <Title>Title 1</Title>
-    <Title level={2}>Title 2</Title>
-    <Title level={3}>Title 3 </Title>
-    <Title level={4}>Title 4</Title>
-    <Title level={5}>Title 5</Title>
-    <Title level={6}>Title 6 y</Title>
+      <Switch checked onChange={val => console.log(val)} />
 
-    <SubTitle >SubTitle 1</SubTitle>
-    <SubTitle level={2}>SubTitle 2</SubTitle>
-
-    <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione dicta aliquam, lab eligendi do veniam explicabo quas distinctio officiis error vel. Ducimus nemo illum reiciendis architecto voluptatibus ullam magnam libero error non eveniet, reprehenderit dolorem saepe enim nobis at. &nbsp; .&perp; &#36; yy 
-    </Text>
-
-    <Text type='smallBody'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione dicta aliquam, lab eligendi do veniam explicabo quas distinctio officiis error vel. Ducimus nemo illum reiciendis architecto voluptatibus ullam magnam libero error non eveniet, reprehenderit dolorem saepe enim nobis at. &nbsp; .&perp; &#36; yy 
-    </Text>
-
-    <Text type="caption">Caption</Text>
-    <Text type="overline">overline</Text>
-
-      <Button
-        type='primary'
-        icon={<Plus size={12} />}
-        onPress={() => setRefreshing(true)}
-        content="te afgua mean with you"
-      />
       <View style={{overflow: 'hidden', borderRadius: 20}}>
         <Svg height="150" width="100%">
           <Defs>
