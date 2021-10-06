@@ -66,7 +66,6 @@ export const st_typography = StyleSheet.create({
     fontSize: 12,
     lineHeight: 12,
     fontFamily: 'TisaRegular',
-    opacity: .6
   },
   overline: {
     fontSize: 10,

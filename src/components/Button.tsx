@@ -1,7 +1,7 @@
 import React, {  useRef } from 'react';
 import {Pressable, View, Animated} from 'react-native';
 import { style } from 'src/Layout/styles';
-import {Text} from '@components/main'
+import {Text} from '@src/components'
 
 import {st_button} from '../../styles/components';
 
@@ -31,8 +31,6 @@ export const Button = (props: InButton) => {
   } = props;
 
   const handleClick = () => {
-    console.log(btn.current);
-
     Animated.timing(pressed, {
       toValue: 150,
       duration: 320,
@@ -41,7 +39,7 @@ export const Button = (props: InButton) => {
 
     setTimeout(() => pressed.setValue(0), 320)
 
-    // if (onPress) onPress();
+    if (onPress) onPress();
   }
 
   return (

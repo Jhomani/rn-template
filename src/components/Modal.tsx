@@ -13,7 +13,6 @@ import {
 import { Session } from '../storage';
 
 let {height: screenHeight} = Dimensions.get("window");
-console.log(screenHeight);
 
 interface InModal  {
   children: JSX.Element;

@@ -21,7 +21,7 @@ import {
   SubTitle, 
   Text,
   Switch,
-} from '@components/main'
+} from '@src/components'
 import {Plus} from '../../icons'
 
 const style = StyleSheet.create({
@@ -83,11 +83,16 @@ export const Login = (props: LoginProps) => {
               <Stop offset={1} stopColor="#f00" stopOpacity={1}/>
             </LinearGradient>
           </Defs>
-          {/* <Ellipse cx={200} cy={70} rx={85} ry={55} fill="url(#mygrad)" /> */}
           <Rect x="0" y="0"  width="100%" height="100%" fill="url(#mygrad)" />
-          {/* <Texting fill="#000" font-size="45" font-family="Verdana" x="150" y="86"></Texting> */}
         </Svg>
       </View>
+
+      <Button 
+        onPress={() => props.navigation.navigate('Setting')}
+        type="primary" 
+        content='Go to Setting'
+      />
+
       <TextInput
         style={style.input}
         placeholder='Click here…'

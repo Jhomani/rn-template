@@ -15,27 +15,27 @@ export const initialState = {
 export type InGlobalState = typeof initialState;
 
 const global = (state = initialState, action: Action) => {
-  switch (action.type) {
-    case REQUEST_ROLES_START: {
-      return { ...state, ...action.payload };
-    }
-    case REQUEST_ROLES_SUCCESS: {
-      return { ...state, ...action.payload };
-    }
-    case TOGGLE_MODAL: {
-      return { ...state, showModal: action.payload };
-    }
-    case CHANGE_SCREEN: {
-      let res = state;
+  let {type, payload} = action;
+  let resp = state;
 
-      if(state.currentScreen != action.payload)
-        res = { ...state, currentScreen: action.payload };
+  switch (type) {
+    case REQUEST_ROLES_SUCCESS: 
+      resp = { ...state, ...payload };
+      
+      break;
+    case TOGGLE_MODAL:
+      if(state.showModal != payload)
+        resp = { ...state, showModal: payload };
 
-      return res;
-    }
-    default:
-      return state;
+      break;
+    case CHANGE_SCREEN:
+      if(state.currentScreen != payload)
+        resp = { ...state, currentScreen: payload };
+
+      break;
   }
+
+  return resp;
 };
 
 export default global;

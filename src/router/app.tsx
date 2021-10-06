@@ -1,12 +1,10 @@
 import React, { memo } from "react";
 import { 
   createNativeStackNavigator, 
-  // TransitionSpecs,
 } from "@react-navigation/native-stack";
 
-import {Login, Register} from "@screens/index";
-import {Session} from '../storage';
-import {useDispatch, useSelector} from "react-redux";
+import {Login, Register, Settings} from "@screens/index";
+import {Session} from '@src/storage';
 import { changeScreen } from '@redux/global/accions';
 import storage from '@redux/config';
 
@@ -42,7 +40,7 @@ function AuthStackScreen() {
           let current;
 
           if(data) {
-            current = data.state.routeNames[data.state.index]
+            current = data.state.routes[data.state.index].name;
             storage.dispatch(changeScreen(current))
           }
         }
@@ -50,6 +48,7 @@ function AuthStackScreen() {
     >
       <Screen name="Login" component={Login} />
       <Screen name="Register" component={Register} />
+      <Screen name="Setting" component={Settings} />
     </Navigator>
   );
 }

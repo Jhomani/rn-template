@@ -8,7 +8,7 @@ import {
   Title, 
   SubTitle, 
   Text,
-} from '@components/main'
+} from '@src/components'
 
 import {Plus} from '../../icons'
 

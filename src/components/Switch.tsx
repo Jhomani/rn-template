@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import {View, Animated, Pressable} from 'react-native';
 
@@ -7,26 +7,37 @@ interface InSwitch {
   checked?: boolean;
 }
 
-const pressInst = new Animated.Value(0);
+export const Switch = ({onChange, checked}: InSwitch) => {
+  let check = Boolean(checked);
+  const [state, setStatus] = useState(check);
+  const circleIns = new Animated.Value(check ? 10 : -2);
+  const pressInst = new Animated.Value(0);
 
-export const Switch = (props: InSwitch) => {
-  const {onChange, checked} = props;
-  const [state, setState] = useState(checked ?? false);
+  useEffect(() => {
+    animate(false);
 
-  const circleIns = new Animated.Value(checked ? 10 : -2);
-  const circle = useRef(circleIns).current;
-  const pressed = useRef(pressInst).current;
+    setStatus(check);
+  }, [checked]);
 
-  const handlePress = () => {
+  const animate = (condition:boolean) => {
     let toValue = 10;
 
-    if(state) toValue = -2;
+    check = condition ? state : check;
 
+    if(check == condition) toValue = -2;
     Animated.timing(circle,{
       toValue,
       duration: 200,
       useNativeDriver: false 
     }).start();
+  }
+
+  const circle = useRef(circleIns).current;
+  const pressed = useRef(pressInst).current;
+
+  const handlePress = () => {
+
+    animate(true);
 
     Animated.timing(pressed, {
       toValue: 26,
@@ -36,7 +47,7 @@ export const Switch = (props: InSwitch) => {
 
     setTimeout(() => pressed.setValue(0), 320)
 
-    setState(!state);
+    setStatus(!state);
     onChange(!state);
   }
 
@@ -49,7 +60,7 @@ export const Switch = (props: InSwitch) => {
       <Pressable style={{
         height: 12, 
         width: 24, 
-        margin: 9,
+        margin: 2,
         borderRadius: 6,
           backgroundColor: state ? '#33888853' : '#E1E1E1'
       }}

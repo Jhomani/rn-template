@@ -12,7 +12,10 @@ export const Title = (props: InTypography) => {
   const nameStyle: keyof TypografyTypes = `header${level ?? 1}`;
 
   return (
-    <RNText style={st_typography[nameStyle]} {...others}>
+    <RNText 
+      {...others}
+      style={[st_typography[nameStyle], style]} 
+    >
       {children}
     </RNText>
   );

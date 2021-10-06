@@ -1,14 +1,10 @@
 import React, { memo, useEffect, useState } from 'react';
-import {useDispatch, useSelector} from 'react-redux';
 import {
-  Text, 
   View , 
   Keyboard,
-  Dimensions,
-  StatusBar,
 } from "react-native";
 
-import {ModalRoot} from '../components/main';
+import {ModalRoot} from '../components';
 import {dimensions} from '@utils/global';
 
 import {style} from './styles';
@@ -54,11 +50,6 @@ const Layout = (props: InLayout) => {
         {props.children}
       </View>
 
-      {/* <View accessibilityLabel="footer">
-        <Text>this is other content</Text>
-      </View> */}
-
-      {/* my global Componetns */}
       <ModalRoot /> 
     </View>
   )

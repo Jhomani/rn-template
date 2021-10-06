@@ -7,13 +7,16 @@ declare module "*.png" {
 
 // routers
 declare type RootStackParamList = {
-  Home: {userId: string};
+  Login: undefined;
+  Register: undefined;
   Welcome: undefined;
 };
 
 declare type AuthStackParamList = {
+  Home: {userId: string};
   Login: undefined;
   Register: undefined;
+  Setting: undefined;
 };
 
 

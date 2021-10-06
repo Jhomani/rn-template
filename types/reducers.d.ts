@@ -8,7 +8,6 @@ declare interface InAuth {
     id: string;
     email: string;
     name: string;
-    language: 'EN' | 'ES';
   }
 }
 
@@ -19,7 +18,14 @@ declare interface InGlobal {
   currentScreen: string;
 }
 
+declare interface InSetting {
+  mode: 'light' | 'dark';
+  color: string;
+  locale: 'EN' | 'ES';
+}
+
 declare interface MainState {
   auth: InAuth;
   global: InGlobal;
+  setting: InSetting;
 }
