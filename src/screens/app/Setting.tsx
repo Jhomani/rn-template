@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import {Text, Title, Switch} from '@src/components';
 import {View, Pressable} from 'react-native';
 import {Setting, Theme} from '@src/icons';
-import {dimensions} from '@utils/global'
+import {dimension} from '@utils/global'
 
 interface InSetting {
   children: JSX.Element;
@@ -14,7 +14,7 @@ export const Settings = (props: InSetting) => {
 
   return (
     <View style={{
-      width: dimensions.width - 30,
+      width: dimension.width - 30,
       alignSelf: 'center'
     }}>
       <View style={{

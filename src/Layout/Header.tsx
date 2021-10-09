@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View , 
   Pressable,
@@ -7,17 +7,21 @@ import {
 import {Session} from '@src/storage';
 import {Menu} from '@src/icons';
 import {useSelector} from 'react-redux';
-import {Text, Title} from '@src/components';
+import {Text, Title, Modal} from '@src/components';
 
 
 const Header = () => {
-  const {currentScreen} = useSelector((state: MainState)=> state.global);
+  // const {currentScreen} = useSelector((state: MainState)=> state.global);
+  const [openModal, setOpenModal] = useState(false);
+
+
   const handleClick = () => {
     const people = {name: 'carlos', last: 'Mamani'};
     // console.log(people);
     // dispatch(loginStart(people));
+    setOpenModal(true);
 
-    Session.navigateTo('Register');
+    // Session.navigateTo('Register');
   }
 
   return (
@@ -41,6 +45,13 @@ const Header = () => {
         >
           <Menu />
         </Pressable>
+
+        <Modal 
+          show={openModal} 
+          hideModal={() => setOpenModal(false)}
+        >
+          <Text>This is text</Text>
+        </Modal>
 
       </View>
   );

@@ -33,13 +33,15 @@ export const Button = (props: InButton) => {
   const handleClick = () => {
     Animated.timing(pressed, {
       toValue: 150,
-      duration: 320,
+      duration: 220,
       useNativeDriver: false 
     }).start();
 
-    setTimeout(() => pressed.setValue(0), 320)
+    setTimeout(() => {
+      if (onPress) onPress();
 
-    if (onPress) onPress();
+      pressed.setValue(0)
+    } , 220)
   }
 
   return (

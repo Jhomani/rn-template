@@ -5,7 +5,7 @@ import {
 } from "react-native";
 
 import {ModalRoot} from '../components';
-import {dimensions} from '@utils/global';
+import {dimension} from '@utils/global';
 
 import {style} from './styles';
 import Header from './Header';
@@ -42,7 +42,7 @@ const Layout = (props: InLayout) => {
       <View 
         style={{
           width: '100%', 
-          height: dimensions.body() - keysize,
+          height: dimension.body() - keysize,
           overflow: 'hidden',
           borderTopLeftRadius: 15,
           borderTopRightRadius: 15,

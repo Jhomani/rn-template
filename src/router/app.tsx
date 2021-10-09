@@ -32,7 +32,7 @@ function AuthStackScreen() {
         return ({
           headerShown: false,
           animationEnabled: false,
-          animation: 'fade'
+          animation: 'none',
         })
       }}
       screenListeners={{
