@@ -46,6 +46,7 @@ const Layout = (props: InLayout) => {
           overflow: 'hidden',
           borderTopLeftRadius: 15,
           borderTopRightRadius: 15,
+          backgroundColor: '#0f0'
         }}>
         {props.children}
       </View>

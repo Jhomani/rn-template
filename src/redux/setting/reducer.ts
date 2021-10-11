@@ -1,7 +1,7 @@
 import { 
   CHANGE_COLOR_START,
   CHANGE_LOCALE_START,
-  CHANGE_THEME_START 
+  CHANGE_MODE_START 
 } from "./constants";
 
 export const initialState: InSetting = {
@@ -15,7 +15,7 @@ const setting = (state = initialState, action: Action) => {
   let resp = state;
 
   switch (type) {
-    case CHANGE_THEME_START:
+    case CHANGE_MODE_START:
       if(state.mode != payload)
         resp = { ...state, mode: payload };
       

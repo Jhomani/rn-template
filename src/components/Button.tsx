@@ -1,72 +1,103 @@
-import React, {  useRef } from 'react';
-import {Pressable, View, Animated} from 'react-native';
-import { style } from 'src/Layout/styles';
+import React, {  useEffect, useRef } from 'react';
+import {
+  Pressable, 
+  View, 
+  Animated, 
+  PressableProps,
+  ViewStyle,
+  GestureResponderEvent
+} from 'react-native';
+import {useSelector} from 'react-redux';
+
 import {Text} from '@src/components'
-
 import {st_button} from '../../styles/components';
+import {colors} from '@styles/variables';
+import { GestureEvent } from 'react-native-gesture-handler';
+import { transform } from '@babel/core';
 
-interface InButton {
+interface InButton extends PressableProps {
   shadow?: 'primary' | 'normal';
   icon?: JSX.Element;
-  shape?: 'round';
   to?: string;
   align?: 'flex-bottom';
-  type: 'primary' | 'secondary' | 'transparent' | 'gradient';
+  type: 'primary' | 'secondary' | 'plain' | 'gradient';
   children?:  string;
   content?:  string;
-  onPress?: Function;
-  inBlank?: string
+  inBlank?: string;
+  style?: ViewStyle
 }
 
 export const Button = (props: InButton) => {
-  const btn = useRef(null);
-  const pressed = useRef(new Animated.Value(0)).current;
+  const size = useRef(new Animated.Value(0)).current;
+  const {mode} = useSelector(({setting}:MainState) => setting);
+
   const {
     children, content,
     type, icon,
-    shape = '',
     align = '',
-    onPress, inBlank,
-    to
+    to,
+    onPress,
+    style,
   } = props;
 
-  const handleClick = () => {
-    Animated.timing(pressed, {
+  let color: undefined | string = colors['dark'].txtEmphasis; 
+  const btnText = content ?? children;
+
+  const handleClick = (ev:GestureResponderEvent) => {
+    Animated.timing(size, {
       toValue: 150,
-      duration: 220,
+      duration: 250,
       useNativeDriver: false 
     }).start();
 
     setTimeout(() => {
-      if (onPress) onPress();
+      if (onPress) onPress(ev);
 
-      pressed.setValue(0)
-    } , 220)
+      size.setValue(0)
+    } , 250)
   }
+
+  // switch(type) {
+  //   case 'secondary': 
+  //     color = undefined;  // this mean Text dinamic color
+  //     st_button.btn.backgroundColor = colors[mode].button;
+  //   case 'plain':
+  //     color = undefined;  // this mean Text dinamic color
+  //     st_button.btn.backgroundColor = '#0000';
+  //   case 'primary':
+  //     color = colors['dark'].txtEmphasis;
+  //     st_button.btn.backgroundColor = colors['static'].variant; 
+  // }
+
+  // if((icon && !btnText))
+  //   st_button.btn.width = 32;
 
   return (
     <Pressable
       onPress={handleClick}
-      ref={btn}
-      style={st_button.btn}
+      style={Object.assign(st_button.btn, style)}
     >
-
       <View style={st_button.content}>
         {icon}
 
-        {children || content &&
+        {btnText &&
           <Text 
             type="button"
-            style={{...st_button.text, ...{marginLeft: icon ? 8 : 0}}}
             numberOfLines={1}  
             ellipsizeMode="tail"
+            color={color}
+            style={{
+              marginLeft: icon ? 8 : 0
+            }}
           >
-            {content ?? children}
+            {btnText}
           </Text>
         }
       </View>
 
-      <Animated.View style={[st_button.pressed, { width: pressed, height: pressed } ]} />
+      <Animated.View 
+        style={{...st_button.pressed, width: size, height: size }} 
+      />
     </Pressable>
   );
 }

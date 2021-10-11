@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
-import {useDispatch} from 'react-redux';
 import Svg, {
   Defs, LinearGradient, 
   Stop, Rect
 } from 'react-native-svg';
+
+import Wrapper from '@screens/Wrapper';
 
 import {
   Keyboard, 
@@ -64,17 +65,15 @@ export const Login = (props: LoginProps) => {
   console.log('re-render... into loging')
 
   return (
-    <>
+    <Wrapper>
     <ScrollView 
       onScrollEndDrag={handleFocus}
       // stickyHeaderIndices={[]}
-      style={{backgroundColor: '#F2F2F2',position: 'relative', overflow: 'scroll'}} 
+      style={{position: 'relative', overflow: 'scroll'}} 
       // scrollEnabled={false}
       // disableIntervalMomentum={true}
       // disableScrollViewPanResponder={true}
     >
-      <Switch checked onChange={val => console.log(val)} />
-
       <View style={{overflow: 'hidden', borderRadius: 20}}>
         <Svg height="150" width="100%">
           <Defs>
@@ -90,7 +89,7 @@ export const Login = (props: LoginProps) => {
       <Button 
         onPress={() => props.navigation.navigate('Setting')}
         type="primary" 
-        content='Go to Setting'
+        content='To Setting'
       />
 
       <TextInput
@@ -99,14 +98,10 @@ export const Login = (props: LoginProps) => {
         onSubmitEditing={Keyboard.dismiss}
         onFocus={handleFocus}
       />
+
+      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima maiores pariatur nihil architecto corporis aliquid impedit voluptatum, voluptatem ab, temporibus quas odio. Temporibus, error. Ex, fugit! Consequuntur, aut dolor at facilis veritatis assumenda accusantium ipsa culpa similique ex vel molestiae.</Text>
         
     </ScrollView>
-    <Modal 
-      show={refreshing}
-      hideModal={hideModal}
-    >
-      <Text>with funtion maen</Text>
-    </Modal>
-    </>
+    </Wrapper>
   );
 };

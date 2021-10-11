@@ -1,19 +1,19 @@
 import React from 'react';
-import Svg, {Path, SvgProps} from 'react-native-svg';
+import {SvgProps} from 'react-native-svg';
+import Icon from './Icon';
 
 interface InProps extends SvgProps {
   size?: number;
   color?: string;
-  direction?: string;
 }
 
-export const Arrow = ({size=15, color='#000', ...oth}: InProps) => (
-  <Svg
+export const Arrow = ({size=10, color, ...oth}: InProps) => (
+  <Icon
     {...oth}
+    color={color}
     width={size} 
-    height={size} 
-    viewBox="0 0 8 12"
-  >
-    <Path d="M1.29 0.710022C0.899998 1.10002 0.899998 1.73002 1.29 2.12002L5.17 6.00002L1.29 9.88002C0.899998 10.27 0.899998 10.9 1.29 11.29C1.68 11.68 2.31 11.68 2.7 11.29L7.29 6.70002C7.68 6.31002 7.68 5.68002 7.29 5.29002L2.7 0.700022C2.32 0.320022 1.68 0.320022 1.29 0.710022Z" fill={color}/>
-  </Svg>
+    height={(10/6)*size} 
+    viewBox="0 0 6 10"
+    path="M0.266515 0.26308C-0.0888383 0.612347 -0.0888383 1.17655 0.266515 1.52581L3.80182 5.00056L0.266515 8.47532C-0.0888383 8.82458 -0.0888383 9.38878 0.266515 9.73805C0.621868 10.0873 1.1959 10.0873 1.55125 9.73805L5.73349 5.62745C6.08884 5.27819 6.08884 4.71399 5.73349 4.36472L1.55125 0.254124C1.20501 -0.0861863 0.621868 -0.0861861 0.266515 0.26308Z"
+  />
 );

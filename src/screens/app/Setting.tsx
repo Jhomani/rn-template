@@ -4,13 +4,25 @@ import {View, Pressable} from 'react-native';
 import {Setting, Theme} from '@src/icons';
 import {dimension} from '@utils/global'
 
+import {useDispatch, useSelector} from 'react-redux';
+import {changeTheme} from '@redux/setting/accions';
+
 interface InSetting {
   children: JSX.Element;
 }
 
 export const Settings = (props: InSetting) => {
-  const {} = props;
   const [state, setState] = useState(false);
+  let {mode} = useSelector(({setting}: MainState) => setting);
+  const dispatch = useDispatch();
+  const {} = props;
+
+  const handleMode = () => {
+    setState(!state); 
+
+    mode = mode == 'dark' ? 'light' : 'dark';
+    dispatch(changeTheme(mode));
+  }
 
   return (
     <View style={{
@@ -35,15 +47,16 @@ export const Settings = (props: InSetting) => {
         backgroundColor: '#BDBDBD', 
       }}/>
 
-      <Pressable style={{
-        display: 'flex',
-        flexDirection: 'row',
-        width: '100%',
-        height: 48,
-        paddingHorizontal: 10,
-        backgroundColor: '#0000000E',
-      }}
-      onPress={() => {setState(!state); console.log('checked')} } 
+      <Pressable 
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          width: '100%',
+          height: 48,
+          paddingHorizontal: 10,
+          backgroundColor: '#0000000E',
+        }}
+        onPress={handleMode} 
       >
         <View style={{
           width: 20,

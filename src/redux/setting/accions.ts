@@ -1,11 +1,11 @@
 import { 
   CHANGE_COLOR_START,
   CHANGE_LOCALE_START,
-  CHANGE_THEME_START 
+  CHANGE_MODE_START 
 } from "./constants";
 
 export const changeTheme = (payload: 'light' | 'dark') => ({
-  type: CHANGE_COLOR_START,
+  type: CHANGE_MODE_START,
   payload,
 });
 
@@ -15,6 +15,6 @@ export const changeLocale = (payload: 'ES' | 'EN') => ({
 });
 
 export const changeColor = (payload: string) => ({
-  type: CHANGE_THEME_START,
+  type: CHANGE_COLOR_START,
   payload,
 });

@@ -1,11 +1,10 @@
 import {LoginScreenNavigationProp} from '@screens/auth/types'
 import storage from '@redux/config';
 import { toggleModal } from '@redux/global/accions'
+import { setting } from '.';
 
 export class Session {
   private static currentNav: LoginScreenNavigationProp;
-  private static modalContent: JSX.Element | null;
-  public static modalHider: Function;
 
   static setNav (nav: LoginScreenNavigationProp) {
     this.currentNav = nav;
@@ -15,18 +14,6 @@ export class Session {
 
     if(this.currentNav)
       this.currentNav.navigate(to);
-  }
-
-  static getModalContent() {
-    return this.modalContent;
-  }
-  static setModalContent(content: JSX.Element, show: boolean) {
-    if(show)
-      this.modalContent = content;
-    else
-      this.modalContent = null;
-
-    storage.dispatch(toggleModal(show))
   }
 }
 
@@ -50,6 +37,8 @@ export class OpenModal {
     this.footerAlign = 'right';
     this.boxtop = 50;
     this.boxright = undefined;
+
+    storage.dispatch(toggleModal(false));
   }
 
   static setModalProps(props: Partial<(typeof OpenModal)> ) {
@@ -57,6 +46,7 @@ export class OpenModal {
     this.headerAlign =  props.headerAlign ?? 'center',
     this.footerAlign =  props.footerAlign ?? 'right',
     this.boxtop =  props.boxtop ?? 50,
+
     this.onCancel = props.onCancel ?? (() => {});
 
     this.children = props.children ?? null;

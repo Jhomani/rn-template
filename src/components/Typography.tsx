@@ -1,6 +1,8 @@
 import React from 'react';
 import {Text as RNText, TextProps} from 'react-native';
 import {st_typography, TypografyTypes} from '@styles/components'
+import { useSelector } from 'react-redux';
+import {colors} from '@styles/variables';
 
 interface InTypography extends TextProps {
   children: string | JSX.Element[] | string[] | JSX.Element;
@@ -37,18 +39,20 @@ interface InText extends TextProps {
   children: string | JSX.Element[] | string[] | JSX.Element;
   type?: 'body' | 'smallBody' | 'button' | 'caption' | 'overline';
   color?: string;
-  width?: number;
 }
 
 export const Text = (props: InText) => {
-  const {children, style,color, type, width, ...others} = props;
-
+  let {children, style,color, type, ...others} = props;
+  const {mode} = useSelector(({setting}:MainState) => setting);
   const nameStyle = type ?? 'body';
+
+  if(!color)
+    color = colors[mode].txtEmphasis;
 
   return (
     <RNText 
       {...others}
-      style={[st_typography[nameStyle], {color, width}, style]} 
+      style={[st_typography[nameStyle], {color}, style]} 
     >
       {children}
     </RNText>

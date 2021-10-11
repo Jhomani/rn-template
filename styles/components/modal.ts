@@ -13,6 +13,7 @@ export  const st_modal = StyleSheet.create({
   },
   box: {
     minWidth: 250,
+    minHeight: 150,
     position: 'absolute',
     overflow: 'hidden',
     backgroundColor: '#fff', 

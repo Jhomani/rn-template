@@ -1,6 +1,6 @@
 export const colors = {
   dark: {
-    txtEmphasis: "#00000057",
+    txtEmphasis: "#E1E1E1",
     txtHelper: "#0000003C",
     txtDisable: "#00000025",
     background: "#18191A",
@@ -14,7 +14,7 @@ export const colors = {
     surface18: "#4C4C4D",
   },
   light: {
-    txtEmphasis: "#FFFFFF57",
+    txtEmphasis: "#202020",
     txtHelper: "#FFFFFF3C",
     txtDisable: "#FFFFFF25",
     background: "#F2F2F2",
@@ -28,8 +28,8 @@ export const colors = {
     surface11: "#E3E3E3",
   },
   static: {
-    primary: '#25D366',
-    variant: '#25D366',
+    primary: '#3D405B',
+    variant: '#32344A',
   },
 }
 

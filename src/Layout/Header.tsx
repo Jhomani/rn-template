@@ -48,7 +48,7 @@ const Header = () => {
 
         <Modal 
           show={openModal} 
-          hideModal={() => setOpenModal(false)}
+          onCancel={() => setOpenModal(false)}
         >
           <Text>This is text</Text>
         </Modal>

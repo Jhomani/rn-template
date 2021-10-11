@@ -1,15 +1,18 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, ViewStyle } from "react-native";
+import {colors} from '@styles/variables';
 
-export  const st_button = StyleSheet.create({
+
+type Maping = { [n: string]: ViewStyle}
+
+export  const st_button: Maping = {
   btn: {
     height: 32,
-    backgroundColor: '#000',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 14,
-    width: 120,
-    margin: 10,
+    borderRadius: 16,
     overflow: 'hidden',
+    backgroundColor: 'transparent',
+    width: 120
   },
   content: {
     position: 'absolute',
@@ -22,13 +25,9 @@ export  const st_button = StyleSheet.create({
     flexDirection: 'row',
     zIndex: 1,
   },
-  text: {
-    color: '#fff',
-    width: 100 - 26,
-  },
   pressed: {
     position: 'absolute',
-    backgroundColor: '#fff1',
+    backgroundColor: '#0001',
     borderRadius: 70,
   }
-});
+};

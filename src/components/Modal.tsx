@@ -38,10 +38,8 @@ export const ModalRoot = () => {
 
   let render = null;
 
-  if(showModal) {
-
+  if(showModal)
     render = <ModalBox />
-  } 
 
   return render;
 }

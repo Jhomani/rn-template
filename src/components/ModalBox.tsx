@@ -1,5 +1,4 @@
 import React, {useEffect, useRef} from 'react';
-import {Clear} from '../icons';
 import {
   Text, 
   View , 
@@ -9,7 +8,9 @@ import {
   Animated,
 } from "react-native";
 
-import { Session } from '../storage';
+import {Plus, Arrow} from '@src/icons';
+import {Button} from '@src/components';
+import {OpenModal} from '@src/storage';
 import {dimension} from '@utils/global';
 import {st_modal} from '@styles/components';
 
@@ -47,7 +48,7 @@ export const ModalBox = () => {
       duration: 400,
       toValue: dimension.height + 10, 
       useNativeDriver: false,
-    }).start(() => Session.modalHider());
+    }).start(() => OpenModal.onCancel());
   }
 
   return (
@@ -58,6 +59,7 @@ export const ModalBox = () => {
         <Animated.View style={{
           ...st_modal.box,
           top: boxtop,
+          backgroundColor: '#0f0',
           alignSelf: 'center'
         }}>
           <Pressable 
@@ -70,7 +72,6 @@ export const ModalBox = () => {
             <View 
               style={{
                 height: 30, 
-                // backgroundColor: '#f00',
                 flexDirection: 'row',
                 justifyContent: 'center',
                 alignItems: 'center'
@@ -80,19 +81,17 @@ export const ModalBox = () => {
             {/* body */}
 
             <View >
-              {Session.getModalContent()}
+              {OpenModal.children}
             </View>
 
             {/* footer */}
-
-            <Pressable 
-              style={{position: 'absolute', top: 10, right: 10}}
+            <Button 
+              icon={<Plus tails size={10} />} 
               onPress={closeModal}
-            >
-              <Clear size={12} />
-            </Pressable>
+              type='plain'
+              style={{position: 'absolute', top: 0, right: 0}}
+            />
           </Pressable>
-
         </Animated.View>
       </Pressable>
   )
