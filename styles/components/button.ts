@@ -1,6 +1,4 @@
-import { StyleSheet, ViewStyle } from "react-native";
-import {colors} from '@styles/variables';
-
+import {ViewStyle} from "react-native";
 
 type Maping = { [n: string]: ViewStyle}
 
@@ -11,8 +9,6 @@ export  const st_button: Maping = {
     justifyContent: 'center',
     borderRadius: 16,
     overflow: 'hidden',
-    backgroundColor: 'transparent',
-    width: 120
   },
   content: {
     position: 'absolute',
@@ -27,7 +23,6 @@ export  const st_button: Maping = {
   },
   pressed: {
     position: 'absolute',
-    backgroundColor: '#0001',
     borderRadius: 70,
   }
-};
+}

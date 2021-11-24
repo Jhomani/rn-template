@@ -15,17 +15,13 @@ export  const st_modal = StyleSheet.create({
     minWidth: 250,
     minHeight: 150,
     position: 'absolute',
-    overflow: 'hidden',
-    backgroundColor: '#fff', 
-    borderRadius: 20,
+    // overflow: 'hidden',
+    borderRadius: 18,
   },
-  text: {
-    color: '#fff',
-    width: 100 - 26,
+  header: {
+    height: 30, 
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
-  pressed: {
-    position: 'absolute',
-    backgroundColor: '#fff1',
-    borderRadius: 70,
-  }
 });

@@ -8,7 +8,10 @@ import {
   Animated,
 } from "react-native";
 
-import {Plus, Arrow} from '@src/icons';
+import {useSelector} from 'react-redux';
+
+import {colors} from '@styles/variables';
+import {Plus} from '@src/icons';
 import {Button} from '@src/components';
 import {OpenModal} from '@src/storage';
 import {dimension} from '@utils/global';
@@ -18,6 +21,7 @@ export const ModalBox = () => {
   const boxtop = useRef(
     new Animated.Value(dimension.height + 10)
   ).current;
+  const {mode} = useSelector(({setting}:MainState) => setting);
 
   useEffect(() => {
     const backAction = () => {
@@ -54,12 +58,12 @@ export const ModalBox = () => {
   return (
       <Pressable 
         onPress={closeModal}
-        style={[st_modal.cover]} 
+        style={st_modal.cover} 
       >
         <Animated.View style={{
           ...st_modal.box,
           top: boxtop,
-          backgroundColor: '#0f0',
+          backgroundColor: colors[mode].card,
           alignSelf: 'center'
         }}>
           <Pressable 
@@ -70,12 +74,7 @@ export const ModalBox = () => {
           >
             {/* header */}
             <View 
-              style={{
-                height: 30, 
-                flexDirection: 'row',
-                justifyContent: 'center',
-                alignItems: 'center'
-              }}>
+              style={st_modal.header}>
               <Text>i am into modal</Text>
             </View>
             {/* body */}
@@ -89,7 +88,9 @@ export const ModalBox = () => {
               icon={<Plus tails size={10} />} 
               onPress={closeModal}
               type='plain'
-              style={{position: 'absolute', top: 0, right: 0}}
+              style={{
+              position: 'absolute', bottom: -18, right: 2
+              }}
             />
           </Pressable>
         </Animated.View>

@@ -4,6 +4,7 @@ export const colors = {
     txtHelper: "#0000003C",
     txtDisable: "#00000025",
     background: "#18191A",
+    card: "#1D1D1D",
     button: "#3A3B3C",
     surface1: "#020202",
     surface3: "#18191A",
@@ -12,6 +13,7 @@ export const colors = {
     surface11: "#2C2C2C",
     surface14: "#3A3B3C",
     surface18: "#4C4C4D",
+    pressed: '#FFFFFF0F',
   },
   light: {
     txtEmphasis: "#202020",
@@ -19,6 +21,7 @@ export const colors = {
     txtDisable: "#FFFFFF25",
     background: "#F2F2F2",
     button: "#E8E8E8",
+    card: "#F8F8F8",
     surface3: "#F8F8F8",
     surface4: "#F5F5F5",
     surface5: "#F2F2F2",
@@ -26,6 +29,7 @@ export const colors = {
     surface8: "#EBEBEB",
     surface9: "#E8E8E8",
     surface11: "#E3E3E3",
+    pressed: '#0000000A',
   },
   static: {
     primary: '#3D405B',

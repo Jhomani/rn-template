@@ -1,4 +1,4 @@
-import React, {  useEffect, useRef } from 'react';
+import React, {useRef} from 'react';
 import {
   Pressable, 
   View, 
@@ -12,15 +12,13 @@ import {useSelector} from 'react-redux';
 import {Text} from '@src/components'
 import {st_button} from '../../styles/components';
 import {colors} from '@styles/variables';
-import { GestureEvent } from 'react-native-gesture-handler';
-import { transform } from '@babel/core';
 
 interface InButton extends PressableProps {
   shadow?: 'primary' | 'normal';
   icon?: JSX.Element;
   to?: string;
   align?: 'flex-bottom';
-  type: 'primary' | 'secondary' | 'plain' | 'gradient';
+  type: 'primary' | 'secondary' | 'plain' | 'gradient' | 'lightPlain';
   children?:  string;
   content?:  string;
   inBlank?: string;
@@ -30,6 +28,10 @@ interface InButton extends PressableProps {
 export const Button = (props: InButton) => {
   const size = useRef(new Animated.Value(0)).current;
   const {mode} = useSelector(({setting}:MainState) => setting);
+  let backgroundColor = colors['static'].variant;
+  let color = colors['dark'].txtEmphasis;
+  let pressedColor = colors['dark'].pressed;
+  let width = 120;
 
   const {
     children, content,
@@ -40,7 +42,6 @@ export const Button = (props: InButton) => {
     style,
   } = props;
 
-  let color: undefined | string = colors['dark'].txtEmphasis; 
   const btnText = content ?? children;
 
   const handleClick = (ev:GestureResponderEvent) => {
@@ -50,32 +51,42 @@ export const Button = (props: InButton) => {
       useNativeDriver: false 
     }).start();
 
-    setTimeout(() => {
-      if (onPress) onPress(ev);
+    if(onPress) {
+      ev.preventDefault();
+      setTimeout(() => onPress(ev), 150);
+    }
 
-      size.setValue(0)
-    } , 250)
+    setTimeout(() => size.setValue(0), 250);
   }
 
-  // switch(type) {
-  //   case 'secondary': 
-  //     color = undefined;  // this mean Text dinamic color
-  //     st_button.btn.backgroundColor = colors[mode].button;
-  //   case 'plain':
-  //     color = undefined;  // this mean Text dinamic color
-  //     st_button.btn.backgroundColor = '#0000';
-  //   case 'primary':
-  //     color = colors['dark'].txtEmphasis;
-  //     st_button.btn.backgroundColor = colors['static'].variant; 
-  // }
+  switch(type) {
+    case 'secondary': 
+      color = '';  // this mean Text dinamic color
+      backgroundColor = colors[mode].button;
+      pressedColor = colors[mode].pressed;
+      break;
+    case 'plain':
+      color = '';  // this mean Text dinamic color
+      pressedColor = colors[mode].pressed;
+      backgroundColor = '#0000';
+      break;
+    case 'lightPlain':
+      backgroundColor = '#0000';
+      break;
+  }
 
-  // if((icon && !btnText))
-  //   st_button.btn.width = 32;
+  if(icon && !btnText)
+    width = 32;
 
   return (
     <Pressable
       onPress={handleClick}
-      style={Object.assign(st_button.btn, style)}
+      style={{
+        ...st_button.btn, 
+        ...style,
+        backgroundColor,
+        width
+      }}
     >
       <View style={st_button.content}>
         {icon}
@@ -86,9 +97,7 @@ export const Button = (props: InButton) => {
             numberOfLines={1}  
             ellipsizeMode="tail"
             color={color}
-            style={{
-              marginLeft: icon ? 8 : 0
-            }}
+            style={{marginLeft: icon ? 8 : 0}}
           >
             {btnText}
           </Text>
@@ -96,7 +105,12 @@ export const Button = (props: InButton) => {
       </View>
 
       <Animated.View 
-        style={{...st_button.pressed, width: size, height: size }} 
+        style={{
+          ...st_button.pressed, 
+          width: size, 
+          height: size, 
+          backgroundColor: pressedColor,
+        }} 
       />
     </Pressable>
   );

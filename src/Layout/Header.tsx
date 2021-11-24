@@ -4,24 +4,19 @@ import {
   Pressable,
 } from "react-native";
 
-import {Session} from '@src/storage';
 import {Menu} from '@src/icons';
-import {useSelector} from 'react-redux';
 import {Text, Title, Modal} from '@src/components';
+import {colors} from '@styles/variables';
 
+import {Button} from '@src/components';
 
 const Header = () => {
   // const {currentScreen} = useSelector((state: MainState)=> state.global);
   const [openModal, setOpenModal] = useState(false);
 
-
   const handleClick = () => {
     const people = {name: 'carlos', last: 'Mamani'};
-    // console.log(people);
-    // dispatch(loginStart(people));
     setOpenModal(true);
-
-    // Session.navigateTo('Register');
   }
 
   return (
@@ -35,16 +30,15 @@ const Header = () => {
           alignItems: 'center'
         }}
       >
-        <Title level={6}>
+        <Title level={6} color={colors['dark'].txtEmphasis} >
           Matrixer
         </Title>
 
-
-        <Pressable 
+        <Button 
+          icon={<Menu color={colors['dark'].txtEmphasis} />} 
           onPress={handleClick}
-        >
-          <Menu />
-        </Pressable>
+          type='lightPlain'
+        />
 
         <Modal 
           show={openModal} 

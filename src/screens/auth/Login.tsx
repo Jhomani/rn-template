@@ -87,7 +87,7 @@ export const Login = (props: LoginProps) => {
       </View>
 
       <Button 
-        onPress={() => props.navigation.navigate('Setting')}
+        // onPress={() => props.navigation.navigate('Setting')}
         type="primary" 
         content='To Setting'
       />
