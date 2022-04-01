@@ -7,3 +7,10 @@
 #### Then build android app `yarn android` (set script with adb devices)
 
 Other tip, make sure active the usb debugger on Vitual Device
+
+
+## For run Flipper follow the next steps
+### Fist install the version 0.140.0
+### Can you find on this > https://github.com/facebook/flipper/releases
+### Then add this plugin on Flipper: Manage Plugins > Install Plugins > search "redux-debugger" > Install
+### For debug Network only enable Network feature
