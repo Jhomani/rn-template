@@ -1,3 +1,3 @@
 export * from './button';
-export * from './typography';
 export * from './modal';
+export * from './typography';

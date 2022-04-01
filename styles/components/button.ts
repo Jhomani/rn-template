@@ -1,8 +1,8 @@
-import {ViewStyle} from "react-native";
+import {ViewStyle} from 'react-native';
 
-type Maping = { [n: string]: ViewStyle}
+type Maping = {[n: string]: ViewStyle};
 
-export  const st_button: Maping = {
+export const st_button: Maping = {
   btn: {
     height: 32,
     alignItems: 'center',
@@ -24,5 +24,5 @@ export  const st_button: Maping = {
   pressed: {
     position: 'absolute',
     borderRadius: 70,
-  }
-}
+  },
+};

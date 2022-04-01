@@ -1,9 +1,4 @@
-import { StyleSheet, StyleSheetProperties } from 'react-native';
-
-
-// const objg: Mapish = {
-//   name: false
-// }
+import {StyleSheet} from 'react-native';
 
 export const st_typography = StyleSheet.create({
   header1: {

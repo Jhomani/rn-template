@@ -1,6 +1,6 @@
 // import {InGlobalState} from '@redux/global/reducer';
 
-declare module "*.png" {
+declare module '*.png' {
   const value: string;
   export default value;
 }
@@ -10,6 +10,7 @@ declare type RootStackParamList = {
   Login: undefined;
   Register: undefined;
   Welcome: undefined;
+  Home: undefined;
 };
 
 declare type AuthStackParamList = {
@@ -19,12 +20,11 @@ declare type AuthStackParamList = {
   Setting: undefined;
 };
 
-
 // redux
 declare type Action = {
   type: string;
-  payload: any 
-}
+  payload: any;
+};
 
 declare interface PromiseAcc {
   res: (value: unknown) => void;

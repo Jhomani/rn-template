@@ -1,12 +1,9 @@
-import React, { memo } from "react";
-import { 
-  createNativeStackNavigator, 
-} from "@react-navigation/native-stack";
-
-import {Login, Register, Settings} from "@screens/index";
-import {Session} from '@src/storage';
-import { changeScreen } from '@redux/global/accions';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import storage from '@redux/config';
+import {changeScreen} from '@redux/global/accions';
+import {Login, Register, Settings} from '@screens/index';
+import {Session} from '@src/storage';
+import React, {memo} from 'react';
 
 const {Navigator, Screen} = createNativeStackNavigator<AuthStackParamList>();
 
@@ -29,21 +26,21 @@ function AuthStackScreen() {
       screenOptions={({navigation}) => {
         Session.setNav(navigation);
 
-        return ({
+        return {
           headerShown: false,
           animationEnabled: false,
           animation: 'none',
-        })
+        };
       }}
       screenListeners={{
         state: ({data}: any) => {
           let current;
 
-          if(data) {
+          if (data) {
             current = data.state.routes[data.state.index].name;
-            storage.dispatch(changeScreen(current))
+            storage.dispatch(changeScreen(current));
           }
-        }
+        },
       }}
     >
       <Screen name="Login" component={Login} />
